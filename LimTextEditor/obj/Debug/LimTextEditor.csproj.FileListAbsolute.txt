@@ -1,0 +1,10 @@
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.exe.config
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.exe
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.pdb
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csprojAssemblyReference.cache
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Form1.resources
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Properties.Resources.resources
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csproj.GenerateResource.cache
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csproj.CoreCompileInputs.cache
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.exe
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.pdb

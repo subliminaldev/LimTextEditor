@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -14,9 +15,14 @@ namespace LimTextEditor
         [STAThread]
         static void Main()
         {
+            //Account account = new Account("lol", "memer", 1, "Insub", "Lim");
+            //Debug.WriteLine(account.ToString());
+
+            
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new Login());
         }
     }
 }
