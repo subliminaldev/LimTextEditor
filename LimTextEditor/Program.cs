@@ -17,9 +17,7 @@ namespace LimTextEditor
         {
             //Account account = new Account("lol", "memer", 1, "Insub", "Lim");
             //Debug.WriteLine(account.ToString());
-
             
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Login());

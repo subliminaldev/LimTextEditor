@@ -14,15 +14,11 @@ namespace LimTextEditor
     {
         public Register()
         {
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
         }
 
         private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Register_Load(object sender, EventArgs e)
         {
 
         }

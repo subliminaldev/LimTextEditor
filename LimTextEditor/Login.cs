@@ -14,6 +14,7 @@ namespace LimTextEditor
     {
         public Login()
         {
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
         }
 
@@ -29,12 +30,24 @@ namespace LimTextEditor
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            Login();
+            LoginUser();
         }
 
-        private void Login()
+        private void LinkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+            OpenRegisterView();
+        }
+
+        private void LoginUser()
+        {
+
+        }
+
+        private void OpenRegisterView()
+        {
+            Register register = new Register();
+
+            register.Show();
         }
     }
 }

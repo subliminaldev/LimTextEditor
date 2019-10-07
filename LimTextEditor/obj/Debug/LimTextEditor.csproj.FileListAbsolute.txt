@@ -8,3 +8,14 @@ C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEdi
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csproj.CoreCompileInputs.cache
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.exe
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.pdb
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csprojAssemblyReference.cache
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Login.resources
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Properties.Resources.resources
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Register.resources
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csproj.GenerateResource.cache
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.csproj.CoreCompileInputs.cache
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.exe
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.pdb
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.exe.config
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.exe
+C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.pdb

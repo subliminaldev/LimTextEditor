@@ -106,7 +106,6 @@ namespace LimTextEditor
             }
 
             return accountsFromFile;
-
         }
     }
 }
