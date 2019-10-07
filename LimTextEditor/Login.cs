@@ -14,7 +14,7 @@ namespace LimTextEditor
     {
         public Login()
         {
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
         }
 

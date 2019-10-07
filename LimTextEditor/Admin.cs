@@ -39,12 +39,12 @@ namespace LimTextEditor
                     //The first line of each account is the account details. Hence, we initialise our account objects from this data.
                     string[] accountDetails = File.ReadAllLines(account + ".txt")[0].Split(',');
 
-                    int accountNumber = 0;
                     string userName = "";
                     string password = "";
                     int userType = -1;
                     string firstName = "";
                     string lastName = "";
+                    string dateOfBirth = "";
                     string dateCreated = "";
 
                     for (int innerLoop = 0; innerLoop < accountDetails.Length; innerLoop++)
@@ -52,31 +52,32 @@ namespace LimTextEditor
                         switch (innerLoop)
                         {
                             case (0):
-                                accountNumber = Convert.ToInt32(accountDetails[innerLoop]);
-                                break;
-                            case (1):
                                 userName = accountDetails[innerLoop];
                                 break;
-                            case (3):
+                            case (1):
                                 password = accountDetails[innerLoop];
                                 break;
-                            case (4):
+                            case (2):
                                 userType = Convert.ToInt32(accountDetails[innerLoop]);
                                 break;
-                            case (5):
+                            case (3):
                                 firstName = accountDetails[innerLoop];
                                 break;
-                            case (6):
+                            case (4):
                                 lastName = accountDetails[innerLoop];
                                 break;
-                            case (7):
+                            case (5):
+                                dateOfBirth = accountDetails[innerLoop];
+                                break;
+                            case (6):
                                 dateCreated = accountDetails[innerLoop];
                                 break;
                         }
                     }
 
+                    accountsFromFile.Add(new Account(userName, password, userType, firstName, lastName, dateOfBirth, dateCreated));
                     //After we get the account details, we need their transactions, which are the rest of the lines from their file.
-                    string[] transactionsString = File.ReadAllLines(account + ".txt");
+                    //string[] transactionsString = File.ReadAllLines(account + ".txt");
 
                     /**
                     List<Transaction> transactions = new List<Transaction> { };
@@ -98,6 +99,7 @@ namespace LimTextEditor
                 }
                     
             }
+
             catch (Exception)
             {
                 //This will create a new one if one does not exist.
