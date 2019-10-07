@@ -23,11 +23,6 @@ namespace LimTextEditor
 
         }
 
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
             LoginUser();
@@ -46,7 +41,6 @@ namespace LimTextEditor
         private void OpenRegisterView()
         {
             Register register = new Register();
-
             register.Show();
         }
     }

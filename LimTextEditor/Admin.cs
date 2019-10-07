@@ -14,10 +14,10 @@ namespace LimTextEditor
 
         public Admin()
         {
-            accounts = InitialiseDatabase();
+            accounts = UpdateDatabase();
         }
 
-        public List<Account> InitialiseDatabase()
+        public static List<Account> UpdateDatabase()
         {
 
             List<Account> accountsFromFile = new List<Account> { };
@@ -41,7 +41,7 @@ namespace LimTextEditor
 
                     string userName = "";
                     string password = "";
-                    int userType = -1;
+                    string userType = "";
                     string firstName = "";
                     string lastName = "";
                     string dateOfBirth = "";
@@ -58,7 +58,7 @@ namespace LimTextEditor
                                 password = accountDetails[innerLoop];
                                 break;
                             case (2):
-                                userType = Convert.ToInt32(accountDetails[innerLoop]);
+                                userType = accountDetails[innerLoop];
                                 break;
                             case (3):
                                 firstName = accountDetails[innerLoop];
@@ -76,6 +76,7 @@ namespace LimTextEditor
                     }
 
                     accountsFromFile.Add(new Account(userName, password, userType, firstName, lastName, dateOfBirth, dateCreated));
+                    
                     //After we get the account details, we need their transactions, which are the rest of the lines from their file.
                     //string[] transactionsString = File.ReadAllLines(account + ".txt");
 
@@ -97,14 +98,13 @@ namespace LimTextEditor
                     accountsFromFile.Add(new Account(accountNumber, userName, firstName, lastName, password, phone, email, transactions));
                     **/
                 }
-                    
             }
 
-            catch (Exception)
+            catch (Exception e)
             {
                 //This will create a new one if one does not exist.
                 //UpdateAccountListFile(accountsList + ".txt");
-                Debug.WriteLine("Exception");
+                Debug.WriteLine(e.Message);
             }
 
             return accountsFromFile;

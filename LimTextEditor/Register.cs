@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LimTextEditor
@@ -16,30 +11,74 @@ namespace LimTextEditor
         {
             //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
-
         }
 
         private void Register_Load(object sender, EventArgs e)
         {
-            userTypeComboBox.Items.Add("View");
-            userTypeComboBox.Items.Add("Edit");
+            //Ensures user cannot choose date in the future.
+            dobDateTimePicker.MaxDate = DateTime.Now;
+        }
+
+        private void SubmitBtn_Click(object sender, EventArgs e)
+        {
+            AttemptRegister();
         }
 
         private void AttemptRegister()
         {
             string username = usernameTextBox.Text;
             string password = passwordTextBox.Text;
-            string userType = userTypeComboBox.Text;
             string firstName = firstNameTextBox.Text;
             string lastName = lastNameTextBox.Text;
-            string dateOfBirth = dobDateTimePicker.ToString();
+            string userType = userTypeComboBox.Text;
+            string dateOfBirth = dobDateTimePicker.Value.ToString("dd/MM/yy");
 
-            List<Object> fields = new List<object>{ usernameTextBox, passwordTextBox, userTypeComboBox, firstNameTextBox, lastNameTextBox, dobDateTimePicker };
+            List<TextBox> fields = new List<TextBox>{ usernameTextBox, passwordTextBox, rePasswordTextBox, firstNameTextBox, lastNameTextBox};
 
-            foreach (Object field in fields)
+            if (!EmptyTextBoxFields(fields))
             {
+                MessageBox.Show("Please address the fields highlighted in red.", "Invalid Details", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
 
+            else if (userType.Equals(""))
+            {
+                MessageBox.Show("Please input a user type.", "Invalid Details", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+
+            else
+            {
+                if (password.Equals(rePasswordTextBox.Text))
+                {
+                    Account account = new Account(username, password, userType, firstName, lastName, dateOfBirth);
+                    Admin.UpdateDatabase();
+                    MessageBox.Show("Account Sucessfully created", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Passwords do not match", "Invalid Password", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
             }
         }
+        private bool EmptyTextBoxFields(List<TextBox> fields)
+        {
+            bool correctDetails = true;
+
+            foreach (TextBox field in fields)
+            {
+                if (field.Text.Equals(""))
+                {
+                    field.BackColor = Color.Red;
+                    correctDetails = false;
+                }
+
+                else
+                {
+                    field.BackColor = Color.White;
+                }
+            }
+
+            return correctDetails;
+        }
     }
+   
 }
