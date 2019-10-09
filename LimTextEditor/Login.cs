@@ -27,11 +27,6 @@ namespace LimTextEditor
         {
             List<Account> accounts = Admin.GetCurrentDatabase();
 
-            foreach(Account account in accounts)
-            {
-                Debug.WriteLine(account.ToString());
-            }
-
             Account loggedInAccount = null;
 
             foreach(Account account in accounts)
