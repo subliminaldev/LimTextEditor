@@ -20,3 +20,4 @@ C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextE
 C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\bin\Debug\LimTextEditor.pdb
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Login.resources
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Register.resources
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.TextEditor.resources

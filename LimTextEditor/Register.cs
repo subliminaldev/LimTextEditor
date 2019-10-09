@@ -50,8 +50,9 @@ namespace LimTextEditor
                 if (password.Equals(rePasswordTextBox.Text))
                 {
                     Account account = new Account(username, password, userType, firstName, lastName, dateOfBirth);
-                    Admin.UpdateDatabase();
+                    Admin.GetCurrentDatabase();
                     MessageBox.Show("Account Sucessfully created", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Hide();
                 }
                 else
                 {

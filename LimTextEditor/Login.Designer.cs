@@ -1,4 +1,7 @@
-﻿namespace LimTextEditor
+﻿using System;
+using System.Windows.Forms;
+
+namespace LimTextEditor
 {
     partial class Login
     {
@@ -34,7 +37,7 @@
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.PasswordTextBox = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.registerLinkLabel = new System.Windows.Forms.LinkLabel();
             this.SuspendLayout();
             // 
             // LoginButton
@@ -90,36 +93,38 @@
             this.LoginLabel.TabIndex = 6;
             this.LoginLabel.Text = "Login";
             // 
-            // linkLabel1
+            // registerLinkLabel
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(357, 476);
-            this.linkLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(330, 29);
-            this.linkLabel1.TabIndex = 7;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Not a member? Register here";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LinkLabel1_LinkClicked);
+            this.registerLinkLabel.AutoSize = true;
+            this.registerLinkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.857143F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.registerLinkLabel.Location = new System.Drawing.Point(357, 476);
+            this.registerLinkLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.registerLinkLabel.Name = "registerLinkLabel";
+            this.registerLinkLabel.Size = new System.Drawing.Size(330, 29);
+            this.registerLinkLabel.TabIndex = 7;
+            this.registerLinkLabel.TabStop = true;
+            this.registerLinkLabel.Text = "Not a member? Register here";
+
+            this.registerLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.RegisterLinkLabel_LinkClicked);
             // 
             // Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(998, 774);
-            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.registerLinkLabel);
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.PasswordTextBox);
             this.Controls.Add(this.PasswordLabel);
             this.Controls.Add(this.UsernameLabel);
             this.Controls.Add(this.UsernameTextBox);
             this.Controls.Add(this.LoginButton);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Login";
             this.Text = "Login";
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion
@@ -130,7 +135,7 @@
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.TextBox PasswordTextBox;
         private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.LinkLabel registerLinkLabel;
     }
 }
 

@@ -14,10 +14,10 @@ namespace LimTextEditor
 
         public Admin()
         {
-            accounts = UpdateDatabase();
+            accounts = GetCurrentDatabase();
         }
 
-        public static List<Account> UpdateDatabase()
+        public static List<Account> GetCurrentDatabase()
         {
 
             List<Account> accountsFromFile = new List<Account> { };
@@ -26,18 +26,18 @@ namespace LimTextEditor
             {
                 //We get the list of accounts from the accounts list file.
 
-                string[] AccountListFileLines = File.ReadAllLines("login.txt");
+                string[] accountListFileLines = File.ReadAllLines("login.txt");
 
-                foreach (string account in AccountListFileLines)
+                for (int accountLine = 0; accountLine < accountListFileLines.Length; accountLine++)
                 {
                     //In case the accounts list has an empty space. Skips it.
-                    if (account == "")
+                    if (accountListFileLines[0] == "")
                     {
                         continue;
                     }
 
                     //The first line of each account is the account details. Hence, we initialise our account objects from this data.
-                    string[] accountDetails = File.ReadAllLines(account + ".txt")[0].Split(',');
+                    string[] accountDetails = File.ReadAllLines("login.txt")[accountLine].Split(',');
 
                     string userName = "";
                     string password = "";
@@ -74,29 +74,7 @@ namespace LimTextEditor
                                 break;
                         }
                     }
-
                     accountsFromFile.Add(new Account(userName, password, userType, firstName, lastName, dateOfBirth, dateCreated));
-                    
-                    //After we get the account details, we need their transactions, which are the rest of the lines from their file.
-                    //string[] transactionsString = File.ReadAllLines(account + ".txt");
-
-                    /**
-                    List<Transaction> transactions = new List<Transaction> { };
-
-                    //The first line is for account details, so if there is more than one line, then it is a transaction.
-                    if (transactionsString.Length > 1)
-                    {
-                        //Loop through each line, which is a transaction. Again we ignore the first line (it is account details).
-                        for (int outerloop = 1; outerloop < transactionsString.Length; outerloop++)
-                        {
-                            double transactionAmount = Convert.ToDouble(transactionsString[outerloop]);
-                            transactions.Add(new Transaction(transactionAmount));
-                        }
-                    }
-
-                    //Creates a new file and adds it to the list of files for the banking system.
-                    accountsFromFile.Add(new Account(accountNumber, userName, firstName, lastName, password, phone, email, transactions));
-                    **/
                 }
             }
 
