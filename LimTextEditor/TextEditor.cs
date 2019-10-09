@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -14,9 +15,7 @@ namespace LimTextEditor
     public partial class TextEditor : Form
     {
         public Account MyAccount { get; set; }
-        private bool Bolded = false;
-        private bool Italised = false;
-        private bool Underlined = false;
+        private string currentFilePath = "";
 
         public TextEditor()
         {
@@ -25,7 +24,6 @@ namespace LimTextEditor
 
         private void TextEditor_Load(object sender, EventArgs e)
         {
-
             //Make the text editor fill the screen.
             WindowState = FormWindowState.Maximized;
             mainRichTextBox.ReadOnly = true;
@@ -38,14 +36,55 @@ namespace LimTextEditor
             }
         }
 
-        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            NewFile();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenFile();
+        }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveFile();
+        }
+
+        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAsFile();
+        }
+
+        private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //SOMETHING.
+        }
+
+        private void BoldTopButton_Click(object sender, EventArgs e)
+        {
+            FormatText("Bold");
+        }
+
+        private void ItalicsTopToolStripButton_Click(object sender, EventArgs e)
+        {
+            FormatText("Italics");
+        }
+
+        private void UnderlineTopToolStripButton_Click(object sender, EventArgs e)
+        {
+            FormatText("Underline");
+        }
+
+        public void NewFile()
+        {
+            currentFilePath = "";
+            mainRichTextBox.Clear();
+            ChangeFormTitle();
         }
 
         private void OpenFile()
@@ -56,25 +95,27 @@ namespace LimTextEditor
             openFileDialog.Filter = "Rtf Files (*.rtf) | *.rtf";
 
             DialogResult dr = openFileDialog.ShowDialog();
+            string filePath = openFileDialog.FileName;
 
             if (dr == DialogResult.OK)
             {
-                string fileName = openFileDialog.FileName;
-
-                //If the file exists, it will be replaced.
-                //File.ReadAllText(fileName);
-                mainRichTextBox.LoadFile(fileName);
+                mainRichTextBox.LoadFile(filePath);
+                currentFilePath = filePath;
+                ChangeFormTitle();
             }
         }
 
-        private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SaveFile()
         {
-            SaveAsFile();
-        }
-
-        private void BoldTopButton_Click(object sender, EventArgs e)
-        {
-            BoldText();
+            if (currentFilePath == "")
+            {
+                SaveAsFile();
+            } 
+            else
+            {
+                string fileName = currentFilePath;
+                mainRichTextBox.SaveFile(fileName, RichTextBoxStreamType.RichText);
+            }
         }
 
         private void SaveAsFile()
@@ -87,26 +128,107 @@ namespace LimTextEditor
 
             if (dr == DialogResult.OK)
             {
-                string fileName = saveFileDialog.FileName;
-
-                mainRichTextBox.SaveFile(fileName, RichTextBoxStreamType.RichText);
+                string filePath = saveFileDialog.FileName;
+                mainRichTextBox.SaveFile(filePath, RichTextBoxStreamType.RichText);
+                currentFilePath = filePath;
+                ChangeFormTitle();
             }
         }
 
-        public void BoldText()
+        public void FormatText(string type)
         {
-            if (!Bolded)
-            {
-                mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Bold);
-                Bolded = true;
-            } 
-            else
-            {
-                mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
-                Bolded = false;
+            switch (type) {
+                case "Bold":
+                    if (boldTopButton.Checked == false)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Bold);
+                        boldTopButton.Checked = true;
+                        italicsTopToolStripButton.Checked = false;
+                        underlineTopToolStripButton.Checked = false;
+                    }
+                    else
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        boldTopButton.Checked = false;
+                    }
+                    break;
+                
+                case "Italics":
+                    if (italicsTopToolStripButton.Checked == false)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Italic);
+                        italicsTopToolStripButton.Checked = true;
+                        boldTopButton.Checked = false;
+                        underlineTopToolStripButton.Checked = false;
+                    }
+                    else
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        italicsTopToolStripButton.Checked = false;
+                    }
+                    break;
+                
+                case "Underline":
+                    if (underlineTopToolStripButton.Checked == false)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Underline);
+                        underlineTopToolStripButton.Checked = true;
+                        boldTopButton.Checked = false;
+                        italicsTopToolStripButton.Checked = false;
+                    }
+                    else
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        underlineTopToolStripButton.Checked = false;
+                    }
+                    break;
             }
         }
 
-        
+        private void ChangeFormTitle()
+        {
+            this.Text = "Lim Text Editor " + currentFilePath;
+        }
+
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(mainRichTextBox.SelectedText);
+                mainRichTextBox.SelectedText = string.Empty;
+            }
+            catch (ArgumentNullException)
+            {
+                //Makes the clipboard empty if no text is selected.
+                Clipboard.Clear();
+            }
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Clipboard.SetText(mainRichTextBox.SelectedText);
+            }
+            catch (ArgumentNullException)
+            {
+                //Makes the clipboard empty if no text is selected.
+                Clipboard.Clear();
+            }
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string copiedText = Clipboard.GetText();
+
+            try
+            {
+                mainRichTextBox.Text = mainRichTextBox.Text.Insert(mainRichTextBox.SelectionStart, copiedText);
+            }
+            catch (ArgumentNullException)
+            {
+                //Do nothing.
+            }  
+        }
     }
 }
