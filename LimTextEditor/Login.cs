@@ -59,5 +59,14 @@ namespace LimTextEditor
             Register register = new Register();
             register.Show();
         }
+
+
+        private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoginUser();
+            }
+        }
     }
 }

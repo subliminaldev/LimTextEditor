@@ -54,149 +54,140 @@
             // 
             this.usernameTextBox.BackColor = System.Drawing.Color.White;
             this.usernameTextBox.ForeColor = System.Drawing.Color.Black;
-            this.usernameTextBox.Location = new System.Drawing.Point(262, 2);
-            this.usernameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.usernameTextBox.Location = new System.Drawing.Point(381, 3);
             this.usernameTextBox.Name = "usernameTextBox";
-            this.usernameTextBox.Size = new System.Drawing.Size(256, 29);
+            this.usernameTextBox.Size = new System.Drawing.Size(371, 38);
             this.usernameTextBox.TabIndex = 0;
             // 
             // lastNameTextBox
             // 
-            this.lastNameTextBox.Location = new System.Drawing.Point(262, 242);
-            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.lastNameTextBox.Location = new System.Drawing.Point(381, 313);
             this.lastNameTextBox.Name = "lastNameTextBox";
-            this.lastNameTextBox.Size = new System.Drawing.Size(256, 29);
+            this.lastNameTextBox.Size = new System.Drawing.Size(371, 38);
             this.lastNameTextBox.TabIndex = 4;
             // 
             // firstNameTextBox
             // 
-            this.firstNameTextBox.Location = new System.Drawing.Point(262, 194);
-            this.firstNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.firstNameTextBox.Location = new System.Drawing.Point(381, 251);
             this.firstNameTextBox.Name = "firstNameTextBox";
-            this.firstNameTextBox.Size = new System.Drawing.Size(256, 29);
+            this.firstNameTextBox.Size = new System.Drawing.Size(371, 38);
             this.firstNameTextBox.TabIndex = 5;
             // 
             // passwordTextBox
             // 
-            this.passwordTextBox.Location = new System.Drawing.Point(262, 50);
-            this.passwordTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.passwordTextBox.Location = new System.Drawing.Point(381, 65);
             this.passwordTextBox.Name = "passwordTextBox";
-            this.passwordTextBox.Size = new System.Drawing.Size(256, 29);
+            this.passwordTextBox.Size = new System.Drawing.Size(371, 38);
             this.passwordTextBox.TabIndex = 6;
             // 
             // firstNameLabel
             // 
             this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Location = new System.Drawing.Point(2, 0);
-            this.firstNameLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.firstNameLabel.Location = new System.Drawing.Point(3, 0);
             this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(102, 25);
+            this.firstNameLabel.Size = new System.Drawing.Size(145, 32);
             this.firstNameLabel.TabIndex = 7;
             this.firstNameLabel.Text = "Username";
             // 
             // passwordLabel
             // 
             this.passwordLabel.AutoSize = true;
-            this.passwordLabel.Location = new System.Drawing.Point(2, 48);
-            this.passwordLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.passwordLabel.Location = new System.Drawing.Point(3, 62);
             this.passwordLabel.Name = "passwordLabel";
-            this.passwordLabel.Size = new System.Drawing.Size(98, 25);
+            this.passwordLabel.Size = new System.Drawing.Size(139, 32);
             this.passwordLabel.TabIndex = 9;
             this.passwordLabel.Text = "Password";
             // 
             // firstNameLbl
             // 
             this.firstNameLbl.AutoSize = true;
-            this.firstNameLbl.Location = new System.Drawing.Point(2, 192);
-            this.firstNameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.firstNameLbl.Location = new System.Drawing.Point(3, 248);
             this.firstNameLbl.Name = "firstNameLbl";
-            this.firstNameLbl.Size = new System.Drawing.Size(106, 25);
+            this.firstNameLbl.Size = new System.Drawing.Size(152, 32);
             this.firstNameLbl.TabIndex = 10;
             this.firstNameLbl.Text = "First Name";
             // 
             // lastNameLbl
             // 
             this.lastNameLbl.AutoSize = true;
-            this.lastNameLbl.Location = new System.Drawing.Point(2, 240);
-            this.lastNameLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lastNameLbl.Location = new System.Drawing.Point(3, 310);
             this.lastNameLbl.Name = "lastNameLbl";
-            this.lastNameLbl.Size = new System.Drawing.Size(106, 25);
+            this.lastNameLbl.Size = new System.Drawing.Size(151, 32);
             this.lastNameLbl.TabIndex = 11;
             this.lastNameLbl.Text = "Last Name";
             // 
             // userTypeLbl
             // 
             this.userTypeLbl.AutoSize = true;
-            this.userTypeLbl.Location = new System.Drawing.Point(2, 336);
-            this.userTypeLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.userTypeLbl.Location = new System.Drawing.Point(3, 434);
             this.userTypeLbl.Name = "userTypeLbl";
-            this.userTypeLbl.Size = new System.Drawing.Size(103, 25);
+            this.userTypeLbl.Size = new System.Drawing.Size(144, 32);
             this.userTypeLbl.TabIndex = 12;
             this.userTypeLbl.Text = "User Type";
             // 
             // dobDateTimePicker
             // 
-            this.dobDateTimePicker.Location = new System.Drawing.Point(262, 290);
-            this.dobDateTimePicker.Margin = new System.Windows.Forms.Padding(2);
+            this.dobDateTimePicker.Location = new System.Drawing.Point(381, 375);
             this.dobDateTimePicker.Name = "dobDateTimePicker";
-            this.dobDateTimePicker.Size = new System.Drawing.Size(256, 29);
+            this.dobDateTimePicker.Size = new System.Drawing.Size(371, 38);
             this.dobDateTimePicker.TabIndex = 13;
             // 
             // dateOfBirthLbl
             // 
             this.dateOfBirthLbl.AutoSize = true;
-            this.dateOfBirthLbl.Location = new System.Drawing.Point(2, 288);
-            this.dateOfBirthLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.dateOfBirthLbl.Location = new System.Drawing.Point(3, 372);
             this.dateOfBirthLbl.Name = "dateOfBirthLbl";
-            this.dateOfBirthLbl.Size = new System.Drawing.Size(118, 25);
+            this.dateOfBirthLbl.Size = new System.Drawing.Size(172, 32);
             this.dateOfBirthLbl.TabIndex = 14;
             this.dateOfBirthLbl.Text = "Date of Birth";
             // 
             // registerLbl
             // 
             this.registerLbl.AutoSize = true;
-            this.registerLbl.Location = new System.Drawing.Point(308, 86);
-            this.registerLbl.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.registerLbl.Location = new System.Drawing.Point(448, 111);
             this.registerLbl.Name = "registerLbl";
-            this.registerLbl.Size = new System.Drawing.Size(83, 25);
+            this.registerLbl.Size = new System.Drawing.Size(121, 32);
             this.registerLbl.TabIndex = 15;
             this.registerLbl.Text = "Register";
             // 
             // userTypeComboBox
             // 
-            this.userTypeComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.userTypeComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.userTypeComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.userTypeComboBox.FormattingEnabled = true;
             this.userTypeComboBox.Items.AddRange(new object[] {
             "View",
             "Edit"});
-            this.userTypeComboBox.Location = new System.Drawing.Point(263, 339);
+            this.userTypeComboBox.Location = new System.Drawing.Point(382, 438);
+            this.userTypeComboBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.userTypeComboBox.MaxLength = 4;
             this.userTypeComboBox.Name = "userTypeComboBox";
-            this.userTypeComboBox.Size = new System.Drawing.Size(254, 32);
+            this.userTypeComboBox.Size = new System.Drawing.Size(368, 39);
             this.userTypeComboBox.TabIndex = 16;
             // 
             // rePasswordTextBox
             // 
-            this.rePasswordTextBox.Location = new System.Drawing.Point(263, 99);
+            this.rePasswordTextBox.Location = new System.Drawing.Point(382, 128);
+            this.rePasswordTextBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.rePasswordTextBox.Name = "rePasswordTextBox";
-            this.rePasswordTextBox.Size = new System.Drawing.Size(254, 29);
+            this.rePasswordTextBox.Size = new System.Drawing.Size(368, 38);
             this.rePasswordTextBox.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 96);
+            this.label1.Location = new System.Drawing.Point(4, 124);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 25);
+            this.label1.Size = new System.Drawing.Size(259, 32);
             this.label1.TabIndex = 18;
             this.label1.Text = "Re-Enter Password";
             // 
             // submitBtn
             // 
-            this.submitBtn.Location = new System.Drawing.Point(210, 461);
+            this.submitBtn.Location = new System.Drawing.Point(305, 595);
+            this.submitBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.submitBtn.Name = "submitBtn";
-            this.submitBtn.Size = new System.Drawing.Size(120, 49);
+            this.submitBtn.Size = new System.Drawing.Size(175, 63);
             this.submitBtn.TabIndex = 19;
             this.submitBtn.Text = "Submit";
             this.submitBtn.UseVisualStyleBackColor = true;
@@ -221,8 +212,7 @@
             this.tableLayoutPanel1.Controls.Add(this.firstNameTextBox, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.label1, 0, 2);
             this.tableLayoutPanel1.Controls.Add(this.rePasswordTextBox, 1, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(19, 50);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(2);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(28, 65);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 8;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
@@ -233,30 +223,27 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 12.5F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(520, 387);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(756, 500);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // enterDetailsGrpBox
             // 
             this.enterDetailsGrpBox.Controls.Add(this.tableLayoutPanel1);
             this.enterDetailsGrpBox.Controls.Add(this.submitBtn);
-            this.enterDetailsGrpBox.Location = new System.Drawing.Point(62, 149);
-            this.enterDetailsGrpBox.Margin = new System.Windows.Forms.Padding(2);
+            this.enterDetailsGrpBox.Location = new System.Drawing.Point(90, 192);
             this.enterDetailsGrpBox.Name = "enterDetailsGrpBox";
-            this.enterDetailsGrpBox.Padding = new System.Windows.Forms.Padding(2);
-            this.enterDetailsGrpBox.Size = new System.Drawing.Size(563, 538);
+            this.enterDetailsGrpBox.Size = new System.Drawing.Size(819, 695);
             this.enterDetailsGrpBox.TabIndex = 21;
             this.enterDetailsGrpBox.TabStop = false;
             this.enterDetailsGrpBox.Text = "Enter Details";
             // 
             // Register
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(687, 736);
+            this.ClientSize = new System.Drawing.Size(999, 951);
             this.Controls.Add(this.registerLbl);
             this.Controls.Add(this.enterDetailsGrpBox);
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Register";
             this.Text = "Register";
             this.Load += new System.EventHandler(this.Register_Load);

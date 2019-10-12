@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Diagnostics;
 using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace LimTextEditor
@@ -16,10 +8,13 @@ namespace LimTextEditor
     {
         public Account MyAccount { get; set; }
         private string currentFilePath = "";
+        private int currentFontSize;
 
         public TextEditor()
         {
             InitializeComponent();
+            fontComboBox.SelectedIndex = 0;
+            currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
         }
 
         private void TextEditor_Load(object sender, EventArgs e)
@@ -80,6 +75,26 @@ namespace LimTextEditor
             FormatText("Underline");
         }
 
+        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CutText();
+        }
+
+        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            CopyText();
+        }
+
+        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PasteText();
+        }
+
+        private void FontComboBox_TextUpdate(Object sender, EventArgs e)
+        {
+            ChangeFontSize();
+        }
+
         public void NewFile()
         {
             currentFilePath = "";
@@ -107,12 +122,14 @@ namespace LimTextEditor
 
         private void SaveFile()
         {
+            //If the text is not saved to any file, run save as.
             if (currentFilePath == "")
             {
                 SaveAsFile();
             } 
             else
             {
+                //Otherwise, save over the current file.
                 string fileName = currentFilePath;
                 mainRichTextBox.SaveFile(fileName, RichTextBoxStreamType.RichText);
             }
@@ -137,18 +154,19 @@ namespace LimTextEditor
 
         public void FormatText(string type)
         {
+            //If the specific button is pressed; make that button selected and deselect the other buttons.
             switch (type) {
                 case "Bold":
                     if (boldTopButton.Checked == false)
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Bold);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Bold);
                         boldTopButton.Checked = true;
                         italicsTopToolStripButton.Checked = false;
                         underlineTopToolStripButton.Checked = false;
                     }
                     else
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Regular);
                         boldTopButton.Checked = false;
                     }
                     break;
@@ -156,14 +174,14 @@ namespace LimTextEditor
                 case "Italics":
                     if (italicsTopToolStripButton.Checked == false)
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Italic);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Italic);
                         italicsTopToolStripButton.Checked = true;
                         boldTopButton.Checked = false;
                         underlineTopToolStripButton.Checked = false;
                     }
                     else
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Regular);
                         italicsTopToolStripButton.Checked = false;
                     }
                     break;
@@ -171,64 +189,74 @@ namespace LimTextEditor
                 case "Underline":
                     if (underlineTopToolStripButton.Checked == false)
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Underline);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Underline);
                         underlineTopToolStripButton.Checked = true;
                         boldTopButton.Checked = false;
                         italicsTopToolStripButton.Checked = false;
                     }
                     else
                     {
-                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font, FontStyle.Regular);
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Regular);
                         underlineTopToolStripButton.Checked = false;
                     }
                     break;
             }
         }
 
+        //Change the Form text on the top to include what file path you are editing.
         private void ChangeFormTitle()
         {
             this.Text = "Lim Text Editor " + currentFilePath;
         }
 
-        private void CutToolStripMenuItem_Click(object sender, EventArgs e)
+        private void CutText()
         {
-            try
+            mainRichTextBox.Cut();
+        }
+
+        private void CopyText()
+        {
+            mainRichTextBox.Copy();
+        }
+
+        private void PasteText()
+        {
+            mainRichTextBox.Paste();
+        }
+        
+        public void ChangeFontSize()
+        {
+            object selectedItem = fontComboBox.SelectedItem;
+
+            if (selectedItem != null)
             {
-                Clipboard.SetText(mainRichTextBox.SelectedText);
-                mainRichTextBox.SelectedText = string.Empty;
-            }
-            catch (ArgumentNullException)
-            {
-                //Makes the clipboard empty if no text is selected.
-                Clipboard.Clear();
+                bool isNumeric = int.TryParse(selectedItem.ToString(), out int number);
+
+                if (isNumeric)
+                {
+                    mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, number);
+                    currentFontSize = Convert.ToInt32(selectedItem.ToString());
+                }
             }
         }
 
-        private void CopyToolStripMenuItem_Click(object sender, EventArgs e)
+        public void FontSizeAtCursor()
         {
-            try
+            string fontSize = mainRichTextBox.SelectionFont.Size.ToString();
+
+            if (mainRichTextBox.SelectionFont != null)
             {
-                Clipboard.SetText(mainRichTextBox.SelectedText);
+                fontComboBox.SelectedItem = fontSize;
             }
-            catch (ArgumentNullException)
+            else
             {
-                //Makes the clipboard empty if no text is selected.
-                Clipboard.Clear();
+                fontComboBox.SelectedIndex = -1;
             }
         }
 
-        private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MainRichTextBox_SelectionChanged(object sender, EventArgs e)
         {
-            string copiedText = Clipboard.GetText();
-
-            try
-            {
-                mainRichTextBox.Text = mainRichTextBox.Text.Insert(mainRichTextBox.SelectionStart, copiedText);
-            }
-            catch (ArgumentNullException)
-            {
-                //Do nothing.
-            }  
+            FontSizeAtCursor();
         }
     }
 }
