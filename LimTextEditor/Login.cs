@@ -9,8 +9,8 @@ namespace LimTextEditor
     {
         public Login()
         {
-            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -41,16 +41,20 @@ namespace LimTextEditor
             if (loggedInAccount != null)
             {
                 MessageBox.Show("Welcome", "Login Succesful", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UsernameTextBox.Text = "";
+                PasswordTextBox.Text = "";
+                UsernameTextBox.Focus();
                 
                 //Hide the login screen, open the text editor and send the account object to the next login screen.
                 Hide();
                 TextEditor textEditor = new TextEditor();
                 textEditor.MyAccount = loggedInAccount;
-                textEditor.Show();
+                textEditor.Show(this);
             }
             else
             {
                 MessageBox.Show("Incorrect Username/Password or Account does not exist.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                PasswordTextBox.Text = ""; 
             }
         }
 
@@ -60,7 +64,7 @@ namespace LimTextEditor
             register.Show();
         }
 
-
+        //Allows user to press enter on the password box to login.
         private void PasswordTextBox_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)

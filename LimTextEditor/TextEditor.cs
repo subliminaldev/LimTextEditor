@@ -9,29 +9,29 @@ namespace LimTextEditor
     {
         public Account MyAccount { get; set; }
         private string currentFilePath = "";
-        private int currentFontSize;
-        private int lastSelectedFontIndex;
+        private int currentFontSize = 8;
+        private int lastSelectedFontIndex = 0;
 
         public TextEditor()
         {
             InitializeComponent();
-            
         }
 
         private void TextEditor_Load(object sender, EventArgs e)
         {
             fontComboBox.SelectedIndex = 0;
-            currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
-
+            
             //Make the text editor fill the screen.
             WindowState = FormWindowState.Maximized;
             mainRichTextBox.ReadOnly = true;
-            
+            fontComboBox.Enabled = false;
+
             userNameToolStripLabel.Text = "Username: " + MyAccount.Username;
 
             if (MyAccount.UserType == "Edit")
             {
                 mainRichTextBox.ReadOnly = false;
+                fontComboBox.Enabled = true;
             }
         }
 
@@ -57,11 +57,13 @@ namespace LimTextEditor
 
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            this.Owner.Show();
+            this.Close();
         }
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            //SOMETHING.
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Show();
         }
 
         private void BoldTopButton_Click(object sender, EventArgs e)
@@ -227,70 +229,66 @@ namespace LimTextEditor
         {
             mainRichTextBox.Paste();
         }
-        
+
+        private void MainRichTextBox_SelectionChanged(object sender, EventArgs e)
+        {
+            FontSizeAtCursor();
+        }
+
         public void ChangeFontSize()
         {
-            if (fontComboBox.SelectedIndex > 0)
+            if (fontComboBox.SelectedIndex > -1)
             {
-                bool isNumeric = int.TryParse(fontComboBox.SelectedItem.ToString(), out int number);
+                int number = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
 
-                if (isNumeric)
-                {
-                    mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, number);
-                    currentFontSize = Convert.ToInt32(number);
-                    lastSelectedFontIndex = fontComboBox.SelectedIndex;
-                }
+                //Debug.WriteLine("Combo Box Font" + number);
+                mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, number);
+                currentFontSize = number;
+                lastSelectedFontIndex = fontComboBox.SelectedIndex;
             }
         }
 
         public void FontSizeAtCursor()
         {
-            /**
-            Font fontSelection = mainRichTextBox.SelectionFont;
+            //Debug.WriteLine(mainRichTextBox.SelectionFont.Size);
 
-            //Check if text is all the same size. Font Selection will be null if not all the same size.
-            if (fontSelection != null)
+            if (fontComboBox.SelectedIndex > -1)
             {
-                //fontComboBox.SelectedItem = fontSelection.Size.ToString();
-                fontComboBox.SelectedIndex = fontComboBox.FindStringExact(mainRichTextBox.SelectionFont.Name);
-            }
-            //If not same size, make combo box blank.
-            else
-            {
-                fontComboBox.SelectedIndex = -1;
-            }
-
-            **/
-            if (fontComboBox.SelectedIndex > 0)
-            {
-                fontComboBox.SelectedIndex = lastSelectedFontIndex;
-                currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
-
                 if (mainRichTextBox.SelectedText.Length == 0)
                 {
                     mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize);
+
+                    if (boldTopButton.Checked == true)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Bold);
+                    }
+                    else if (italicsTopToolStripButton.Checked == true)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Italic);
+                    }
+                    else if (underlineTopToolStripButton.Checked == true)
+                    {
+                        mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize, FontStyle.Underline);
+                    }
                 }
 
-                else if (mainRichTextBox.SelectionFont.ToString() != currentFontSize.ToString())
+                else if (mainRichTextBox.SelectionFont.Size != currentFontSize)
                 {
                     fontComboBox.SelectedIndex = -1;
                 }
-
-                else
-                {
-                    mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize);
-                }
             }
-            else
+            //Return the text to the previously selected font size.
+            else if (mainRichTextBox.SelectedText.Length == 0)
             {
                 fontComboBox.SelectedIndex = lastSelectedFontIndex;
-                currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
             }
         }
 
-        private void MainRichTextBox_SelectionChanged(object sender, EventArgs e)
+        //If user clicks the x button on top right, make it show the login screen.
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            FontSizeAtCursor();
+            this.Owner.Show();
+            base.OnFormClosing(e);
         }
     }
 }

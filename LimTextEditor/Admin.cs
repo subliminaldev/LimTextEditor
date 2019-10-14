@@ -78,5 +78,20 @@ namespace LimTextEditor
 
             return accountsFromFile;
         }
+
+        public static bool AccountExists(string username)
+        {
+            List<Account> accounts = GetCurrentDatabase();
+
+            foreach(Account account in accounts)
+            {
+                if (account.Username == username)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

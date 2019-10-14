@@ -11,6 +11,7 @@ namespace LimTextEditor
         {
             //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             InitializeComponent();
+            this.CenterToScreen();
         }
 
         private void Register_Load(object sender, EventArgs e)
@@ -45,6 +46,11 @@ namespace LimTextEditor
                 MessageBox.Show("Please input a user type.", "Invalid Details", MessageBoxButtons.OK, MessageBoxIcon.Hand);
             }
 
+            else if (Admin.AccountExists(username))
+            {
+                MessageBox.Show("Username in use. Please try another one.", "Username Taken", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            }
+
             else
             {
                 if (password.Equals(rePasswordTextBox.Text))
@@ -52,7 +58,7 @@ namespace LimTextEditor
                     Account account = new Account(username, password, userType, firstName, lastName, dateOfBirth);
                     Admin.GetCurrentDatabase();
                     MessageBox.Show("Account Sucessfully created", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Hide();
+                    this.Close();
                 }
                 else
                 {
@@ -81,5 +87,4 @@ namespace LimTextEditor
             return correctDetails;
         }
     }
-   
 }

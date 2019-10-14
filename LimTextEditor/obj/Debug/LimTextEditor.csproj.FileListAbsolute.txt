@@ -21,3 +21,4 @@ C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEdi
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.Register.resources
 C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.TextEditor.resources
 C:\Users\Inscrub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.TextEditor.resources
+C:\Users\insub\Documents\GitHub\LimTextEditor\LimTextEditor\obj\Debug\LimTextEditor.AboutBox.resources
