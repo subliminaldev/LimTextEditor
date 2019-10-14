@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,20 +10,23 @@ namespace LimTextEditor
         public Account MyAccount { get; set; }
         private string currentFilePath = "";
         private int currentFontSize;
+        private int lastSelectedFontIndex;
 
         public TextEditor()
         {
             InitializeComponent();
-            fontComboBox.SelectedIndex = 0;
-            currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
+            
         }
 
         private void TextEditor_Load(object sender, EventArgs e)
         {
+            fontComboBox.SelectedIndex = 0;
+            currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
+
             //Make the text editor fill the screen.
             WindowState = FormWindowState.Maximized;
             mainRichTextBox.ReadOnly = true;
-
+            
             userNameToolStripLabel.Text = "Username: " + MyAccount.Username;
 
             if (MyAccount.UserType == "Edit")
@@ -226,31 +230,61 @@ namespace LimTextEditor
         
         public void ChangeFontSize()
         {
-            object selectedItem = fontComboBox.SelectedItem;
-
-            if (selectedItem != null)
+            if (fontComboBox.SelectedIndex > 0)
             {
-                bool isNumeric = int.TryParse(selectedItem.ToString(), out int number);
+                bool isNumeric = int.TryParse(fontComboBox.SelectedItem.ToString(), out int number);
 
                 if (isNumeric)
                 {
                     mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, number);
-                    currentFontSize = Convert.ToInt32(selectedItem.ToString());
+                    currentFontSize = Convert.ToInt32(number);
+                    lastSelectedFontIndex = fontComboBox.SelectedIndex;
                 }
             }
         }
 
         public void FontSizeAtCursor()
         {
-            string fontSize = mainRichTextBox.SelectionFont.Size.ToString();
+            /**
+            Font fontSelection = mainRichTextBox.SelectionFont;
 
-            if (mainRichTextBox.SelectionFont != null)
+            //Check if text is all the same size. Font Selection will be null if not all the same size.
+            if (fontSelection != null)
             {
-                fontComboBox.SelectedItem = fontSize;
+                //fontComboBox.SelectedItem = fontSelection.Size.ToString();
+                fontComboBox.SelectedIndex = fontComboBox.FindStringExact(mainRichTextBox.SelectionFont.Name);
             }
+            //If not same size, make combo box blank.
             else
             {
                 fontComboBox.SelectedIndex = -1;
+            }
+
+            **/
+            if (fontComboBox.SelectedIndex > 0)
+            {
+                fontComboBox.SelectedIndex = lastSelectedFontIndex;
+                currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
+
+                if (mainRichTextBox.SelectedText.Length == 0)
+                {
+                    mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize);
+                }
+
+                else if (mainRichTextBox.SelectionFont.ToString() != currentFontSize.ToString())
+                {
+                    fontComboBox.SelectedIndex = -1;
+                }
+
+                else
+                {
+                    mainRichTextBox.SelectionFont = new Font(mainRichTextBox.Font.FontFamily, currentFontSize);
+                }
+            }
+            else
+            {
+                fontComboBox.SelectedIndex = lastSelectedFontIndex;
+                currentFontSize = Convert.ToInt32(fontComboBox.SelectedItem.ToString());
             }
         }
 

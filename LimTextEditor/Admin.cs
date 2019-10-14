@@ -10,16 +10,8 @@ namespace LimTextEditor
 {
     class Admin
     {
-        private List<Account> accounts;
-
-        public Admin()
-        {
-            accounts = GetCurrentDatabase();
-        }
-
         public static List<Account> GetCurrentDatabase()
         {
-
             List<Account> accountsFromFile = new List<Account> { };
 
             try
@@ -78,11 +70,10 @@ namespace LimTextEditor
                 }
             }
 
-            catch (Exception e)
+            catch (FileNotFoundException)
             {
-                //This will create a new one if one does not exist.
-                //UpdateAccountListFile(accountsList + ".txt");
-                Debug.WriteLine(e.Message);
+                File.Create("login.txt");
+                GetCurrentDatabase();
             }
 
             return accountsFromFile;
