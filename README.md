@@ -2,6 +2,7 @@
 
 Rich Text Editor for Windows.
 
+![screenshot](LTE.JPG)
 
 
 
